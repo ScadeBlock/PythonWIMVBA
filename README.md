@@ -6,4 +6,4 @@
 + Added UseDebug (show cmd and keep cmd alive with it's output) and keepFileData (keeps pywvout.txt and pywvba.py after execution) attributes
 
 # Where're lower version of PythonWimVBA?
-** Lower Version is tested privately - some version is public released but they are pre-release. They're outdated, unsecure and unstable, so please use only version 5.2 or above
+**Lower Version is tested privately - some version is public released but they are pre-release. They're outdated, unsecure and unstable, so please use only version 5.2 or above**
