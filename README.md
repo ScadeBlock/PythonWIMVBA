@@ -24,7 +24,7 @@
 + :warning: `Iline` is custom with `showcmd=True` but it's must for `showcmd=False`
 + [Optional] UseDebug: Show-up cmd that runs python code, keep it alive with it's output [Use debug to catch errors, Output file may not catch them. Only works with `showcmd=False`]
 
-**Command:** ``RunPy(code,pythonPath, [ keepFileData = False] , [UseDebug  = False])``
+**Command:** ``RunPyOld(code,pythonPath, [ keepFileData = False] , [UseDebug  = False])``
 + Code splitting by ";;" , e.x : `import time;;time.sleep(5)`
 + [Optional] keepFileData: Keep the output file and code file after finishing execution. 
 + [Optional] UseDebug: Show cmd that runs python code and keep it alive with it's output [Use debug to catch errors, the output file may not catch them. So when debug is enabled, Output file does nothing.
