@@ -12,6 +12,10 @@
 # Where's the lower version of PythonWimVBA?
 > **Lower Version is tested privately; some versions are publicly released, but they are pre-release. They're outdated, unsecure and unstable, so please use only versions 5.2 or above**.
 
+# Installation
++ Install python (Any version, NOTE: Checks Add python to path when start setup)
++ Install PyWimVBA to your vba project (Install .bas file and see [here](https://support.tetcos.com/support/solutions/articles/14000143233-how-to-import-vba-script-bas-file-in-ms-excel-) )
+
 # Usage
 **Command:** ``LoadPy(file,[iline = False])``
 + Load a python file and convert it to PyWimVBA Syntax
