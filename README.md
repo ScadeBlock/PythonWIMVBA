@@ -9,7 +9,7 @@
 + Keeps the old PyWimVBA function (In version 5.2) and renames it to `RunPyOld`
 + Added iline attributes
 # Where's the lower version of PythonWimVBA?
-> **Lower Version is tested privately; some versions are publicly released, but they are pre-release. They're outdated, unsecure and unstable, so please use only version 5.2 or above**.
+> **Lower Version is tested privately; some versions are publicly released, but they are pre-release. They're outdated, unsecure and unstable, so please use only versions 5.2 or above**.
 
 # Usage
 **Command:** `RunPy(code, [pythonPath = "python"], [showcmd = True], [iline = False], [UseDebug =False])`
@@ -38,7 +38,7 @@
 | Easy-Debug | :star: (very good, with `showcmd = False & UseDebug=True`,`showcmd = True` is not recommend for debugging)   |  :star2: (amazing,with `UseDebug & keepFileData=True`)|
 | Easy-To-Use | :ok_hand: |:ok_hand: |
 | Cache file | :raised_hands: (no cache, but `showcmd=False` needs create logfile) | :turtle: (must create logfile,code file) | 
-
+| Stable | :neutral_face: (New release,so it's unstable) | :star2: (Stable) |
 
 # Some advices?
 + Although both PyWimVba Function - New and old have it debug method, i suggest you write and debug your code in a code editor like `Visual Studio Code`, `Sublime Text`. And then , replace all the newline with `;;` and paste it into your vba scripts
