@@ -1,5 +1,5 @@
 Attribute VB_Name = "PyWimVBA5"
-' Pywim VBA Function (5.3)
+' Pywim VBA Function (5.2a)
 ' A module to run python via VBA, By DatCanFly
 ' Copyright by DatCanFly (2023)
 
