@@ -4,15 +4,20 @@ app = Flask(__name__)
 from io import StringIO
 from contextlib import redirect_stdout
 from traceback import format_exc
-import sys
-value = {}
+import sys,os
+
+
 @app.route("/")
 def main():
     if request.args.get("code") == None:
         return "PyWimVBA server, this does nothing"
     elif request.args.get("code") == "$clear":
-        sys.modules[__name__].__dict__.clear()
+        for n in dir():
+            if n[0]!='_': delattr(sys.modules[__name__], n)
         return "Cleared"
+    elif request.args.get("code") == "$exit":
+        own_pid = os.getpid()
+        os.kill(own_pid, 9)
     else:
         cpde = request.args.get("code")
         f = StringIO()
