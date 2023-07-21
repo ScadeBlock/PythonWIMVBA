@@ -6,9 +6,7 @@
 + Improve function, add new `newengine` 
 + Enhanced PyWimVBA performance
 + Keeps the old PyWimVBA function (In version 5.2) and renames it to `RunPyOld`
-- Add new `RunPyWid()` - with `showcmd=True` function doesn't need to create file
-  - Remove `keepFileData` attributes and add `showcmd`
-  - Added `iline` attributes
+- ~~Add new `RunPyWid()` - with `showcmd=True` function doesn't need to create file~~ (Removed!)
 # Where's the lower version of PythonWimVBA?
 > **Lower Version is tested privately; some versions are publicly released, but they are pre-release. They're outdated, unsecure and unstable, so please use only versions 5.2 or above**.
 
@@ -37,6 +35,8 @@
 + [Optional] UseDebug: Show cmd that runs python code and keep it alive with it's output [Use debug to catch errors, the output file may not catch them. So when debug is enabled, Output file does nothing.
 + E.x : `MsgBox RunPy("Welcome to \'Python With VBA!\'")`
 
+> In lastest fix, Remove RunPyOld, RunPyWid (Issued and Too Unstable)
+
 **Command:** `RunPyWid(code, [pythonPath = "python"], [showcmd = True], [iline = False], [UseDebug =False])`
 + Code splitting by ";;" , e.x : `import time;;time.sleep(5)`
 + With `showcmd=True` performance will be better than `showcmd=False` (because of `showcmd=False` must create logfile to catch log, `showcmd=True` mustn't)
@@ -56,14 +56,4 @@
 + [Optional] keepFileData: Keep the output file and code file after finishing execution. 
 + [Optional] UseDebug: Show cmd that runs python code and keep it alive with it's output [Use debug to catch errors, the output file may not catch them. So when debug is enabled, Output file does nothing.
 
-
----
-
-| Information | `RunPy()` |  `RunPyWid()` |`RunPyOld()` |
-| ----------- | ----------- | ----------- |  ----------- |
-| Performance | :star: ( Works good, more in `newengine=true` |:zap: (Amazing) | :+1: (Old but not wasted) | 
-| Easy-Debug | :star2: (`UseDebug` for it) | :star: (`UseDebug` available, but a little bad) |  :star2: (`UseDebug` for it)| 
-| Easy-To-Use | :ok_hand: (Easy attributes) | :+1: (A little hard to start) |:ok_hand: (Easy attributes) |
-| Cache file (codefile & logfile) | :raised_hands: (With `newengine=True`, only needs to create logfile)| :muscle: (No cache-file, but `showcmd=True` requires logfile) | :turtle: (Use both cache file and logfile) | 
-| Stable & error | :star2: (Works well) | :neutral_face: (New releases,contains many errors)| :star2: (Stable) |
 
