@@ -25,8 +25,9 @@
 + `StartPyServer(Optional: pythonPath = "python",Optional useCustomPyServer: False,Optional : silent=false)` :  Starts **`PyServer`** (PyServer supports only single server) `silent=true` will hide command prompt of `PyServer`. Set `useCustomPyServer` to path of your PyServer (can use in offline or a older pyserver)
 + `EndPyServer(Optional deletePyServer: True)` - A server doesn't close automatically with VBA, so you need to close it before end VBA code .  Use `deletePyServer=False` to keep your PyServer to reuse in `StartPyServer` (Not recommend)
 + `CheckPyServer()` - Check a or any server is running.
++ `PathPyServer()` - Get PyServer path
 + `ClearPyServer()` - Because `PyServer` support only one server, you can use this function to clear cached data like value,etc...
-+ `RunPy(code)` - Simply run a code of python, split new line with `;;`
++ `RunPy(code)` - Simply run a code of python, split new line with `;;` and indentation are space,tab or tab smart syntax: `!tab~`
 + ``LoadPy(file)`` - Load a python file and convert it to PyWimVBA Syntax
   - For example, it'll convert this file code
   
@@ -52,7 +53,7 @@ Sub running()
     StartPyServer
     RunPy ("example_value = 'Hello from PWA 6!'")
     MsgBox RunPy("print(example_value)") 'To test cached value
-    MsgBox RunPy("if 1+1==2:;;  print('It actually works!')")
+    MsgBox RunPy("if 1+1==2:;;!tab~print('It actually works!')")
     EndPyServer
 End Sub
 ```
