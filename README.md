@@ -27,7 +27,7 @@
 + `CheckPyServer()` - Check a or any server is running.
 + `ClearPyServer()` - Because `PyServer` support only one server, you can use this function to clear cached data like value,etc...
 + `RunPy(code)` - Simply run a code of python, split new line with `;;`
-+ ``LoadPy(file,[iline = False])`` - Load a python file and convert it to PyWimVBA Syntax
++ ``LoadPy(file)`` - Load a python file and convert it to PyWimVBA Syntax
   - For example, it'll convert this file code
   
   `examplefile.py`
