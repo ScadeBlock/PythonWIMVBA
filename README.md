@@ -20,7 +20,7 @@
 + Install PyWimVBA to your vba project (Install .bas file and see [here](https://support.tetcos.com/support/solutions/articles/14000143233-how-to-import-vba-script-bas-file-in-ms-excel-) )
 
 # 🎨 PyWimVBA Example
-### Example usage
+### Documention
 #### 💎PyWimVBA 6.0 New Function
 + `StartPyServer(Optional: pythonPath = "python",Optional useCustomPyServer: False,Optional : silent=false)` :  Starts **`PyServer`** (PyServer supports only single server) `silent=true` will hide command prompt of `PyServer`. Set `useCustomPyServer` to path of your PyServer (can use in offline or a older pyserver)
 + `EndPyServer(Optional deletePyServer: True)` - A server doesn't close automatically with VBA, so you need to close it before end VBA code .  Use `deletePyServer=False` to keep your PyServer to reuse in `StartPyServer` (Not recommend)
@@ -45,4 +45,14 @@
 + [Optional] keepFileData: Keep the output file and code file after finishing execution. 
 + [Optional] UseDebug: Show cmd that runs python code and keep it alive with it's output [Use debug to catch errors, the output file may not catch them. So when debug is enabled, Output file does nothing.
 + E.x : `MsgBox RunPy("Welcome to \'Python With VBA!\'")`
-
+### Example usage
+#### Here's a example code to run python in vba wuth PWV
+```
+Sub running()
+    StartPyServer
+    RunPy ("example_value = 'Hello from PWA 6!'")
+    MsgBox RunPy("print(example_value)") 'To test cached value
+    MsgBox RunPy("if 1+1==2:;;  print('It actually works!')")
+    EndPyServer
+End Sub
+```
