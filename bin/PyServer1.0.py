@@ -9,17 +9,20 @@ import sys,os
 
 @app.route("/")
 def main():
-    if request.args.get("code") == None:
+    cdef = request.args.get("code")
+    if cdef == None:
         return "PyWimVBA server, this does nothing"
-    elif request.args.get("code") == "$clear":
+    elif cdef == "$clear":
         for n in dir():
             if n[0]!='_': delattr(sys.modules[__name__], n)
         return "Cleared"
-    elif request.args.get("code") == "$exit":
+    elif cdef == "$exit":
         own_pid = os.getpid()
         os.kill(own_pid, 9)
+    elif cdef == "$path":
+        return __file__
     else:
-        cpde = request.args.get("code")
+        cpde = cdef
         f = StringIO()
         cpde = cpde.replace(";;","\n")
         with redirect_stdout(f):
