@@ -2,24 +2,6 @@ Attribute VB_Name = "PyWimVBA6"
 ' PyWimVBA (6.0) Big Jump - Beta
 ' A module to run python via VBA, By DatCanFly
 ' Copyright by DatCanFly (2023)
-Public Const codemserv = """"""
-Private Function oline(code)
-    MsgBox run1
-    Dim delimiter As String
-    Dim newstr As String
-    delimiter = ";;"
-    nms = Split(code, delimiter)
-    For Each Item In nms
-        newstr = newstr & Item & "\n"
-    Next Item
-    newstr = Replace(newstr, "'", "\'")
-    newstr = Replace(newstr, """", "\'")
-    newstr = Replace(newstr, "\\'", "\'")
-    newstr = Replace(newstr, "\\" & """", "\'")
-    newstr = "exec('" & newstr & "')"
-    oline = newstr
-
-End Function
 Private Function GenerateRandomString(length As Integer) As String
     Dim randomString As String
     Dim charSet As String
@@ -32,6 +14,15 @@ Private Function GenerateRandomString(length As Integer) As String
     Next i
     
     GenerateRandomString = randomString
+End Function
+Private Function SmartSyntax(code As String)
+    'code = Replace(code, vbCr, ";;")
+    code = Replace(code, "!tab~", "    ")
+    code = Replace(code, "+", "!plus~")
+    code = Replace(code, "&", "!and~")
+    code = Replace(code, "=", "!equal~")
+    code = Replace(code, vbLf, ";;")
+    SmartSyntax = code
 End Function
 Private Function WriteToFile(filePath As String, content As String, Optional spliton As Boolean = True) As Boolean
     Dim fileNumber As Integer
@@ -118,7 +109,6 @@ Public Function StartPyServer(Optional pythonPath As String = "python", Optional
     command = "cmd /C " & " """ & """" & pythonPath & """" & " """ & pfo & """" & """ "
     Set WshShell = CreateObject("WScript.Shell")
     WshShell.Run command, attr, False
-    StartPyServer = pfo
 End Function
 Public Function CheckPyServer() As Boolean
     Dim Request As Object
@@ -140,6 +130,13 @@ Public Function CheckPyServer() As Boolean
     Exit Function
 EndNow:
 End Function
+Public Function PathPyServer()
+    With Request
+        .Open "GET", "http://127.0.0.1:9812/?code=$path", False
+        .Send
+        PathPyServer = .responseText
+    End With
+End Function
 Public Function EndPyServer(Optional deletePyServer = True)
     Dim Request As Object
     Set Request = CreateObject("MSXML2.XMLHTTP")
@@ -160,7 +157,7 @@ Public Function EndPyServer(Optional deletePyServer = True)
     End With
 Oops:
     'ex
-        If deletePyServer = True Then
+        If deletePyServer = True & Dir(passy) Then
             Kill passy
         End If
 
@@ -176,6 +173,7 @@ Public Function ClearPyServer()
     End With
 End Function
 Public Function RunPy(code As String)
+    code = SmartSyntax(code)
     Dim Request As Object
     Dim url As String
     url = "http://127.0.0.1:9812?code=" & code
@@ -248,7 +246,7 @@ Public Function RunPyOld(code As String, Optional pythonPath As String = "python
     End If
     RunPyOld = fileContent
 End Function
-Public Function LoadPy(file, Optional iline As Boolean = False)
+Public Function LoadPy(file)
     Dim code As String
     Open file For Input As #1
     code = Input$(LOF(1), 1)
@@ -258,16 +256,12 @@ Public Function LoadPy(file, Optional iline As Boolean = False)
     code = Replace(code, vbLf, ";;")
     code = Replace(code, vbLf, ";;")
     code = Replace(code, vbLf, ";;")
-
-    If iline = True Then
-        code = oline(code)
-        
-    End If
     LoadPy = code
 End Function
-
-Sub a()
-    Dim upath As String
-    'upath = StartPyServer
-    upath = EndPyServer()
+Sub running()
+    'StartPyServer
+    RunPy ("example_value = 'Hello from PWA 6!'")
+    MsgBox RunPy("print(example_value)") 'To test cached value
+    MsgBox RunPy("if 1+1==2:;;!tab~print('It actually works!')")
+    EndPyServer
 End Sub
