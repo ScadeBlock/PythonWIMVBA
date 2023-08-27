@@ -1,4 +1,4 @@
-# PyServer 1.0 - PyWimVBA 6.0
+# PyServer 1.0a - PyWimVBA 6.0
 from flask import Flask,request
 app = Flask(__name__)
 from io import StringIO
