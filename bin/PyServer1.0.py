@@ -25,6 +25,9 @@ def main():
         cpde = cdef
         f = StringIO()
         cpde = cpde.replace(";;","\n")
+        cpde = cpde.replace("!plus~","+")
+        cpde = cpde.replace("!and~","&")
+        cpde = cpde.replace("!equal~","=")
         with redirect_stdout(f):
             try:
                 exec(cpde, globals())
