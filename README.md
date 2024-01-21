@@ -5,7 +5,7 @@
 > New features, with many changes from 5.x
 ### 🎉🎉**New Features**🎉🎉
 - Create new RunPy
-	- Require `PyServer` (1.0 for PyWVBA 6.0) 
+	- Require `PyServer` (1.0 for PyWVBA 6.0) - (Program will auto download it when necessary
 	- Added cache value
   - Huge Performance improves from 5.x 
 + Added some server function like `ClearPyServer()` - Clear all variable cached
