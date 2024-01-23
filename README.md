@@ -45,9 +45,6 @@ Sub MySub()
     EndPyServer ' Stop the server
 End Sub
 ```
-FACT: You can hide the CMD of `PyWimVBA` by set `silent=true` (Read the documention below)
-
-	
 
 ### Documention
 #### 💎PyWimVBA 6.0 New Function
