@@ -21,7 +21,34 @@
 > **Lower Version is tested privately; some versions are publicly released, but they are pre-release. They're outdated, unsecure and unstable, so please use only versions 5.2 or above**.
 
 # 🎨 PyWimVBA Example
-> It's easier to understand and use these function to check the EXAMPLE below... 
+### Quick Start
+> Introduce basic uses of `PyWimVBA` 
++ Example construct
+```
+Sub MySub()
+    StartPyServer ' Start the server
+    ' Code here
+    EndPyServer ' Stop the server
+End Sub
+```
+FACT: You can hide the CMD of `PyWimVBA` by set `silent=true` (Read the documention below)
+
++ Run python code & extract python value 
+```
+Sub MySub()
+    'Do a equation in python and export show it with MsgBox
+    Dim Output as String
+    StartPyServer ' Start the server
+    RunPy("myvariable = 8 + 5")
+    Output = RunPy("print(myvariable)") 'You can extract python value by using "print"
+    MsgBox Output
+    EndPyServer ' Stop the server
+End Sub
+```
+FACT: You can hide the CMD of `PyWimVBA` by set `silent=true` (Read the documention below)
+
+	
+
 ### Documention
 #### 💎PyWimVBA 6.0 New Function
 + **`StartPyServer(Optional: pythonPath = "python",Optional useCustomPyServer: False,Optional : silent=false)`** :  Starts **`PyServer`** (PyServer supports only single server) **`silent=true`** will hide command prompt of `PyServer`. Set `useCustomPyServer` to path of your PyServer (can use in offline or a older pyserver)
@@ -49,14 +76,4 @@
 + [Optional] keepFileData: Keep the output file and code file after finishing execution. 
 + [Optional] UseDebug: Show cmd that runs python code and keep it alive with it's output [Use debug to catch errors, the output file may not catch them. So when debug is enabled, Output file does nothing.
 + E.x : `MsgBox RunPy("Welcome to \'Python With VBA!\'")`
-### Example usage
-#### Here's a example code to run python in vba wuth PWV
-```
-Sub running()
-    StartPyServer
-    RunPy ("example_value = 'Hello from PWA 6!'")
-    MsgBox RunPy("print(example_value)") 'To test cached value
-    MsgBox RunPy("if 1+1==2:;;!tab~print('It actually works!')")
-    EndPyServer
-End Sub
-```
+
